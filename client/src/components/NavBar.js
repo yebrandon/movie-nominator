@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
+import Logo from '../img/logo.png';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -12,7 +13,10 @@ const NavBar = () => {
 
 	return (
 		<Menu>
-			<Menu.Item>The Shoppies</Menu.Item>
+			<Menu.Item>
+				<img src={Logo} /> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{' '}
+				The Shoppies
+			</Menu.Item>
 			<Menu.Item
 				as={Link}
 				name='searchmovies'
