@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Home from './components/Home';
-import About from './components/About';
+import SearchMovies from './components/SearchMovies';
+import Nominations from './components/Nominations';
 
 function App() {
 	return (
 		<Router>
 			<NavBar></NavBar>
 			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/home' component={Home} />
-				<Route path='/about' component={About} />
+				<Route exact path='/' component={SearchMovies} />
+				<Route path='/searchmovies' component={SearchMovies} />
+				<Route path='/nominations' component={Nominations} />
 			</Switch>
 		</Router>
 	);

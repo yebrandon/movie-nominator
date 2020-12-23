@@ -1,9 +1,3 @@
-# React + Node.js App Boilerplate
+# Movie Nominator
 
-This repo can be used to quickstart a web application with React and Node.js.
-
-## Libraries
-
--   Semantic UI React
--   React Router
--   Express.js
+A web app for searching and nominating movies from OMDb. Developed for Shopify's UX & Web Developer Intern Challenge Summer 2021

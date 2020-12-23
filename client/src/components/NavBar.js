@@ -4,7 +4,7 @@ import { Menu } from 'semantic-ui-react';
 import './NavBar.css';
 
 const NavBar = () => {
-	const [activeItem, setActiveItem] = useState('home');
+	const [activeItem, setActiveItem] = useState('searchmovies');
 
 	const handleItemClick = (e, { name }) => {
 		setActiveItem(name);
@@ -12,23 +12,24 @@ const NavBar = () => {
 
 	return (
 		<Menu>
+			<Menu.Item>The Shoppies</Menu.Item>
 			<Menu.Item
 				as={Link}
-				name='home'
-				active={activeItem === 'home'}
+				name='searchmovies'
+				active={activeItem === 'searchmovies'}
 				onClick={handleItemClick}
-				to='/home'
+				to='/searchmovies'
 			>
-				Home
+				Search Movies
 			</Menu.Item>
 			<Menu.Item
 				as={Link}
-				name='about'
-				active={activeItem === 'about'}
+				name='nominations'
+				active={activeItem === 'nominations'}
 				onClick={handleItemClick}
-				to='/about'
+				to='/nominations'
 			>
-				About
+				Nominations
 			</Menu.Item>
 		</Menu>
 	);
