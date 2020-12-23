@@ -5,7 +5,7 @@ import SearchMovies from './components/SearchMovies';
 import Nominations from './components/Nominations';
 
 const App = () => {
-	const [movies, setMovies] = useState();
+	const [movies, setMovies] = useState([]);
 	const [nominations, setNominations] = useState([]);
 
 	return (

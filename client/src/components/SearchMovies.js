@@ -4,25 +4,34 @@ import { apikey } from '../apikey';
 
 const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 	const [query, setQuery] = useState();
+	const [error, setError] = useState();
 
 	const handleChange = (e) => {
 		setQuery(e.target.value);
 	};
 
 	const search = () => {
-		fetch(
-			'http://www.omdbapi.com/?apikey=' +
-				apikey +
-				'&type=movie&s=' +
-				query
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				if (data['Response']) {
-					setMovies(data['Search']);
-					console.log(data);
-				}
-			});
+		if (query) {
+			fetch(
+				'http://www.omdbapi.com/?apikey=' +
+					apikey +
+					'&type=movie&s=' +
+					query
+			)
+				.then((response) => response.json())
+				.then((data) => {
+					if (data['Response'] === 'True') {
+						setMovies(data['Search']);
+						setError();
+					} else if (data['Error'] === 'Too many results.') {
+						setError(
+							'Too many results, please use a more specific search!'
+						);
+					}
+				});
+		} else {
+			setError('Please enter a valid search!');
+		}
 	};
 
 	const renderMovies = () => {
@@ -38,20 +47,17 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 						<Card.Content extra>
 							<div>
 								<Button
-									disabled={nominations.includes(
-										movie['imdbID']
-									)}
+									disabled={nominations.includes(movie)}
 									onClick={() => {
 										setNominations((movies) => [
 											...movies,
-											movie['imdbID']
+											movie
 										]);
-										console.log(nominations);
 									}}
 									basic
 									color='green'
 									content={
-										nominations.includes(movie['imdbID'])
+										nominations.includes(movie)
 											? 'Nominated!'
 											: 'Nominate'
 									}
@@ -67,12 +73,17 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 	return (
 		<div>
 			<Header as='h1'>Search for Movies</Header>
+
 			<Input
 				icon='search'
 				placeholder='Search...'
 				onChange={handleChange}
 			/>
+			<br></br>
 			<Button onClick={search}>Search</Button>
+			<br></br>
+			{error}
+			<br></br>
 			{renderMovies()}
 		</div>
 	);
