@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import SearchMovies from './components/SearchMovies';
 import Nominations from './components/Nominations';
@@ -10,12 +10,12 @@ const App = () => {
 	const [nominations, setNominations] = useState([]);
 
 	return (
-		<Router>
+		<HashRouter basename='/'>
 			<NavBar></NavBar>
 			<Switch>
 				<Route
 					exact
-					path='/movie-nominator'
+					path='/'
 					render={() => (
 						<SearchMovies
 							setMovies={setMovies}
@@ -26,7 +26,7 @@ const App = () => {
 					)}
 				/>
 				<Route
-					path='/movie-nominator/searchmovies'
+					path='/searchmovies'
 					render={() => (
 						<SearchMovies
 							setMovies={setMovies}
@@ -37,7 +37,7 @@ const App = () => {
 					)}
 				/>
 				<Route
-					path='/movie-nominator/searchmovies'
+					path='/nominations'
 					render={() => (
 						<Nominations
 							setMovies={setMovies}
@@ -48,7 +48,7 @@ const App = () => {
 					)}
 				/>
 			</Switch>
-		</Router>
+		</HashRouter>
 	);
 };
 
