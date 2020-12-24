@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Header, Input, Button, Card } from 'semantic-ui-react';
+import { Header, Input, Button, Card, Divider, Icon } from 'semantic-ui-react';
 import { apikey } from '../apikey';
 
 const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
-	const [query, setQuery] = useState();
-	const [error, setError] = useState();
+	const [query, setQuery] = useState('');
+	const [error, setError] = useState('');
 
 	const handleChange = (e) => {
 		setQuery(e.target.value);
+	};
+
+	const handleKeyPress = (e) => {
+		if (e.key === 'Enter') {
+			search();
+		}
 	};
 
 	const search = () => {
@@ -15,11 +21,12 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 			fetch(
 				'http://www.omdbapi.com/?apikey=' +
 					apikey +
-					'&type=movie&s=' +
+					'&type=movie&plot=short&s=' +
 					query
 			)
 				.then((response) => response.json())
 				.then((data) => {
+					console.log(data);
 					if (data['Response'] === 'True') {
 						setMovies(data['Search']);
 						setError();
@@ -27,6 +34,12 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 						setError(
 							'Too many results, please use a more specific search!'
 						);
+					} else if (data['Error'] === 'Movie not found!') {
+						setError(
+							'No results found, please try a different search!'
+						);
+					} else {
+						setError('Something went wrong, please try again!');
 					}
 				});
 		} else {
@@ -38,15 +51,15 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 		if (movies.length > 0) {
 			return movies.map((movie) => {
 				return (
-					<Card>
+					<Card className='movie-card'>
 						<Card.Content>
 							<Card.Header>{movie.Title}</Card.Header>
 							<Card.Meta>{movie.Year}</Card.Meta>
-							<Card.Description>{movie.Plot}</Card.Description>
 						</Card.Content>
 						<Card.Content extra>
 							<div>
 								<Button
+									className='add-button'
 									disabled={nominations.includes(movie)}
 									onClick={() => {
 										setNominations((movies) => [
@@ -71,20 +84,20 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 	};
 
 	return (
-		<div>
-			<Header as='h1'>Search for Movies</Header>
-
+		<div className='container'>
+			<Header className='title' as='h1'>
+				Search for Movies
+			</Header>
 			<Input
-				icon='search'
+				className='search-bar'
+				icon={<Icon name='search' link onClick={search} />}
 				placeholder='Search...'
 				onChange={handleChange}
+				onKeyPress={handleKeyPress}
 			/>
-			<br></br>
-			<Button onClick={search}>Search</Button>
-			<br></br>
 			{error}
-			<br></br>
-			{renderMovies()}
+			<Divider section></Divider>
+			<div className='card-list'>{renderMovies()}</div>
 		</div>
 	);
 };

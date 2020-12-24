@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar';
 import SearchMovies from './components/SearchMovies';
 import Nominations from './components/Nominations';
+import './App.css';
 
 const App = () => {
 	const [movies, setMovies] = useState([]);

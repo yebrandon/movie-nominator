@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Header } from 'semantic-ui-react';
 import Logo from '../img/logo.png';
-import './NavBar.css';
 
 const NavBar = () => {
 	const [activeItem, setActiveItem] = useState('searchmovies');
@@ -13,9 +12,13 @@ const NavBar = () => {
 
 	return (
 		<Menu>
-			<Menu.Item>
-				<img src={Logo} /> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{' '}
-				The Shoppies
+			<Menu.Item className='borderless'>
+				<Header
+					className='logo-text'
+					as='h3'
+					image={Logo}
+					content='The Shoppies'
+				/>
 			</Menu.Item>
 			<Menu.Item
 				as={Link}
@@ -24,7 +27,7 @@ const NavBar = () => {
 				onClick={handleItemClick}
 				to='/searchmovies'
 			>
-				Search Movies
+				<div className='tab'>Search Movies</div>
 			</Menu.Item>
 			<Menu.Item
 				as={Link}
