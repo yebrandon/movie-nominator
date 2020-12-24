@@ -15,7 +15,7 @@ const App = () => {
 			<Switch>
 				<Route
 					exact
-					path='/'
+					path='/movie-nominator'
 					render={() => (
 						<SearchMovies
 							setMovies={setMovies}
@@ -26,7 +26,7 @@ const App = () => {
 					)}
 				/>
 				<Route
-					path='/searchmovies'
+					path='/movie-nominator/searchmovies'
 					render={() => (
 						<SearchMovies
 							setMovies={setMovies}
@@ -37,7 +37,7 @@ const App = () => {
 					)}
 				/>
 				<Route
-					path='/nominations'
+					path='/movie-nominator/searchmovies'
 					render={() => (
 						<Nominations
 							setMovies={setMovies}
