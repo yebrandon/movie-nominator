@@ -19,9 +19,9 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 	const search = () => {
 		if (query) {
 			fetch(
-				'http://www.omdbapi.com/?apikey=' +
+				'https://www.omdbapi.com/?apikey=' +
 					apikey +
-					'&type=movie&plot=short&s=' +
+					'&type=movie&s=' +
 					query
 			)
 				.then((response) => response.json())
