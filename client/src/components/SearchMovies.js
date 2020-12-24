@@ -95,7 +95,7 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 				onChange={handleChange}
 				onKeyPress={handleKeyPress}
 			/>
-			{error}
+			<p className='error'>{error}</p>
 			<Divider section></Divider>
 			<div className='card-list'>{renderMovies()}</div>
 		</div>

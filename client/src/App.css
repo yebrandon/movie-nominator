@@ -21,7 +21,8 @@
 .ui.button.basic.green.button.add-button,
 .ui.button.basic.red.button.remove-button,
 .ui.input.search-bar > input,
-.ui.message.banner p {
+.ui.message.banner p,
+.error {
 	font-family: 'Nunito', sans-serif;
 	font-weight: 400;
 }
@@ -39,7 +40,12 @@
 }
 
 .ui.card.movie-card,
-.ui.card.box:first-child,
-.ui.card.box:last-child {
+.ui.card.movie-card:first-child,
+.ui.card.movie-card:last-child {
 	margin: 1em;
+}
+
+.error {
+	color: red;
+	margin: 1em 0em 1em 0em;
 }

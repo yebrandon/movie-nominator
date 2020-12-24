@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Header } from 'semantic-ui-react';
+import { Menu, Header, Icon } from 'semantic-ui-react';
 import Logo from '../img/logo.png';
 
 const NavBar = () => {
@@ -38,6 +38,14 @@ const NavBar = () => {
 			>
 				Nominations
 			</Menu.Item>
+			<Menu.Menu position='right'>
+				<Menu.Item
+					as='a'
+					href='https://github.com/yebrandon/movie-nominator'
+				>
+					<Icon fitted size='big' name='github'></Icon>
+				</Menu.Item>
+			</Menu.Menu>
 		</Menu>
 	);
 };
