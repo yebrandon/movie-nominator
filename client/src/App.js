@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import SearchMovies from './components/SearchMovies';
 import Nominations from './components/Nominations';
@@ -11,7 +11,7 @@ const App = () => {
 
 	return (
 		<HashRouter basename='/'>
-			<NavBar></NavBar>
+			<NavBar />
 			<Switch>
 				<Route
 					exact
@@ -47,6 +47,7 @@ const App = () => {
 						/>
 					)}
 				/>
+				<Route path='/' render={() => <Redirect to='searchmovies' />} />
 			</Switch>
 		</HashRouter>
 	);

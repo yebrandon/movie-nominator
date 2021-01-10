@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "search for and nominate movies from OMDB",
   "main": "server.js",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,5 +18,5 @@
   "bugs": {
     "url": "https://github.com/yebrandon/movie-nominator/issues"
   },
-  "homepage": "https://github.com/yebrandon/movie-nominator#readme"
+  "homepage": "https://yebrandon.github.io/movie-nominator/"
 }

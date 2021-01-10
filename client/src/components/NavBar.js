@@ -1,38 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Header, Icon } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 import Logo from '../img/logo.png';
 
 const NavBar = () => {
-	const [activeItem, setActiveItem] = useState('searchmovies');
+	const [activeTab, setActiveItem] = useState('searchmovies');
 
-	const handleItemClick = (e, { name }) => {
+	const handleItemClick = ({ name }) => {
 		setActiveItem(name);
 	};
 
 	return (
 		<Menu>
-			<Menu.Item className='borderless'>
-				<Header
-					className='logo-text'
-					as='h3'
-					image={Logo}
-					content='The Shoppies'
-				/>
+			<Menu.Item fitted className='borderless'>
+				<img className='logo' src={Logo} alt='' />
 			</Menu.Item>
+			<Menu.Item className='logo-text'>Movie Nominator</Menu.Item>
 			<Menu.Item
 				as={Link}
 				name='searchmovies'
-				active={activeItem === 'searchmovies'}
+				active={activeTab === 'searchmovies'}
 				onClick={handleItemClick}
 				to='/searchmovies'
 			>
-				<div className='tab'>Search Movies</div>
+				Search Movies
 			</Menu.Item>
 			<Menu.Item
 				as={Link}
 				name='nominations'
-				active={activeItem === 'nominations'}
+				active={activeTab === 'nominations'}
 				onClick={handleItemClick}
 				to='/nominations'
 			>

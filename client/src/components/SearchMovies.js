@@ -12,11 +12,11 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 
 	const handleKeyPress = (e) => {
 		if (e.key === 'Enter') {
-			search();
+			searchMovies();
 		}
 	};
 
-	const search = () => {
+	const searchMovies = () => {
 		if (query) {
 			fetch(
 				'https://www.omdbapi.com/?apikey=' +
@@ -26,7 +26,6 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 			)
 				.then((response) => response.json())
 				.then((data) => {
-					console.log(data);
 					if (data['Response'] === 'True') {
 						setMovies(data['Search']);
 						setError();
@@ -41,6 +40,10 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 					} else {
 						setError('Something went wrong, please try again!');
 					}
+				})
+				.catch((err) => {
+					setError('Something went wrong, please try again!');
+					console.error(err);
 				});
 		} else {
 			setError('Please enter a valid search!');
@@ -90,13 +93,13 @@ const SearchMovies = ({ movies, setMovies, nominations, setNominations }) => {
 			</Header>
 			<Input
 				className='search-bar'
-				icon={<Icon name='search' link onClick={search} />}
+				icon={<Icon name='search' link onClick={searchMovies} />}
 				placeholder='Search...'
 				onChange={handleChange}
 				onKeyPress={handleKeyPress}
 			/>
 			<p className='error'>{error}</p>
-			<Divider section></Divider>
+			<Divider section />
 			<div className='card-list'>{renderMovies()}</div>
 		</div>
 	);

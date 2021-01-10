@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Raleway:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Nova+Flat&family=Raleway:wght@400;500&display=swap');
 
-.ui.header.logo-text,
 .ui.message.banner .header {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 500;
@@ -10,10 +9,6 @@
 .ui.menu .item {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 400;
-}
-
-.ui.menu .item {
-	font-size: 1.2em;
 }
 
 .ui.card.box > .content > .header,
@@ -27,22 +22,36 @@
 	font-weight: 400;
 }
 
-.container {
-	padding: 2em;
+.ui.menu .item.logo-text {
+	font-family: 'Nova Flat', sans-serif;
+	font-size: 1.5em;
 }
 
-.card-list {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin: auto;
-	justify-content: space-around;
+.ui.menu .item {
+	font-size: 1.2em;
+}
+
+.ui.menu .item > img:not(.ui).logo {
+	margin-left: 1em;
 }
 
 .ui.card.movie-card,
 .ui.card.movie-card:first-child,
 .ui.card.movie-card:last-child {
 	margin: 1em;
+}
+
+.container {
+	padding: 2em;
+}
+
+/* Responsive display with equal spacing */
+.card-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: auto;
+	justify-content: space-around;
 }
 
 .error {
